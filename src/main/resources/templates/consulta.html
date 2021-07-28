@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Empleats</title>
+<link rel="stylesheet" href="footer.css">
+
+</head>
+
+
+
+<body>
+	<h1>---LLISTAT EMPLEATS---</h1>
+
+	<h3>
+		Usuari : <span th:text="${usuari.nom}"></span> -Password : <span
+			th:text="${usuari.password}"></span>
+	</h3>
+
+	<table border=1>
+		<thead>
+			<br>
+			<tr>
+				<th>Id
+				<th>nom
+				<th>Categoria
+				<th>Sou
+				<th>Eliminar
+				<th>Modificar
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:if="${empleats.empty}">
+
+				<td colspan="2">No hi ha empleats</td>
+			</tr>
+			<tr th:each="empleat : ${empleats}">
+				<td><span th:text="${empleat.id}"></span></td>
+				<td><span th:text="${empleat.nom}"></span></td>
+				<td><span th:text="${empleat.categoria}"></span></td>
+				<td><span th:text="${empleat.sou}"></span></td>
+				<td><a class="btn" th:href="@{/borrado/}+${empleat.id}">
+						<button class="btn" type="submit">Eliminar</button>
+				</a></td>
+				<td><a class="btn" th:href="@{/modificar/}+${empleat.id}">
+						<button class="btn" type="submit">Modificar</button>
+				</a></td>
+			</tr>
+
+		</tbody>
+	</table>
+	<form th:action="${action}" th:object="${empleat}" method="post">
+		<br> &nbsp;&nbsp;ID: <input type=text th:field="*{id}"
+			value="*{id}" readonly> NOM: <input type=text
+			th:field="*{nom}" value="*{nom}">
+		<p>
+
+			CATEGORIA : <select th:field="*{categoria}">
+				<option
+					th:each="categoria :${T(cat.empleats.main.bean.Categoria).values()}"
+					th:value="${categoria}" th:text="${categoria.nomCategoria}">
+				</option>
+
+
+			</select>
+			<br> SOU: <input type=text th:field="*{sou}" value="*{sou}"
+				readonly><br>
+
+			
+			<input type=submit name=submit th:value="${boton}"> <br>
+			
+			
+			
+	</form>
+	
+	<form action="/especial"  method="post">
+		<br>
+		
+		<h5>Seleciona categoria</h5>
+		<p>
+
+			CATEGORIA : <select name="categoria">
+				<option value="todos">TODOS</option>
+				<option
+				
+					th:each="categoria :${T(cat.empleats.main.bean.Categoria).values()}"
+					th:value="${categoria}" th:text="${categoria.nomCategoria}">
+					
+				</option>
+
+
+			</select>
+			
+
+			
+			<input type=submit name=submit value="Filtra per categoria"> <br>
+			
+			
+			
+	</form>
+<footer>
+
+		<h5 align="left">
+			(M13) simple Spring HTTP Services <br>
+		</h5>
+		<p>Created by Jordi Albiol</p>
+
+		<p align="left">
+			<img src=https://itacademy.barcelonactiva.cat/pluginfile.php/1/theme_remui/logo/1610709847/logo.png
+				height="50 %" width="75 % " alt="" />
+		</p>
+
+
+</footer>
+
+
+
+	
+
+</body>
+
+</html>

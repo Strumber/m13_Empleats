@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="${titulo}"></title>
+</head>
+<body>
+
+<h1 th:text="${titulo}"></h1>
+	<form action="/" method ="post">
+	Login : <input type=text name=nom> <br><br>
+	Password : <input type ="password" name =password> <br><br>
+	<input type=submit name=submit value = "login">
+	</form>
+
+</body>
+<footer src="footer.css">
+    <link href="footer.css" rel="stylesheet">
+    
+    <h5 align="left">
+        (M13) simple Spring HTTP Services
+    </h5>
+    <a>Created by Jordi Albiol</a>
+
+    <p align="left">
+    <img src=https://itacademy.barcelonactiva.cat/pluginfile.php/1/theme_remui/logo/1610709847/logo.png
+    height="50 %" width="75 % " alt="" />
+    </p>
+   
+
+</footer>
+
+</html>
