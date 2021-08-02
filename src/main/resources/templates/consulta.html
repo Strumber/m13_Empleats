@@ -3,14 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Empleats</title>
-<link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="consulta.css" type="text/css" media="all">
 
 </head>
-
+<style>
+body {
+  padding-left: 11em;
+  font-family: Georgia, "Times New Roman",
+        Times, serif;
+  color: purple;
+  background-color: #d8da3d }
+  </style>
 
 
 <body>
-	<h1>---LLISTAT EMPLEATS---</h1>
+
+	<h1>---LLISTAT EMPLEATS---
+	
+	
+	
+	</h1>
 
 	<h3>
 		Usuari : <span th:text="${usuari.nom}"></span> -Password : <span
@@ -40,12 +52,18 @@
 				<td><span th:text="${empleat.nom}"></span></td>
 				<td><span th:text="${empleat.categoria}"></span></td>
 				<td><span th:text="${empleat.sou}"></span></td>
-				<td><a class="btn" th:href="@{/borrado/}+${empleat.id}">
+				<td><!-- <a th:href="@{/borrado/}+${empleat.id}"> Eliminar</a>-->
+				  <a class="btn" th:href="@{/borrado/}+${empleat.id}"> 
 						<button class="btn" type="submit">Eliminar</button>
-				</a></td>
-				<td><a class="btn" th:href="@{/modificar/}+${empleat.id}">
+				</a>
+				</td>
+				<td><!--<a th:href="@{/modificar/}+${empleat.id}"> Modificar</a>-->
+				
+				  <a class="btn" th:href="@{/modificar/}+${empleat.id}">
 						<button class="btn" type="submit">Modificar</button>
-				</a></td>
+				</a>
+				</td>
+			
 			</tr>
 
 		</tbody>
@@ -64,8 +82,8 @@
 
 
 			</select>
-			<br> SOU: <input type=text th:field="*{sou}" value="*{sou}"
-				readonly><br>
+			<!-- <br> SOU: <input type=text th:field="*{sou}" value="*{sou}"
+				readonly><br> -->
 
 			
 			<input type=submit name=submit th:value="${boton}"> <br>
@@ -74,7 +92,9 @@
 			
 	</form>
 	
+	
 	<form action="/especial"  method="post">
+	
 		<br>
 		
 		<h5>Seleciona categoria</h5>
@@ -99,7 +119,8 @@
 			
 			
 	</form>
-<footer>
+<footer >
+
 
 		<h5 align="left">
 			(M13) simple Spring HTTP Services <br>
